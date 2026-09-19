@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amio Uddokta | Business Your Responsibility, Everything Else Ours</title>
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+
+<meta name="description"
+content="Amio Uddokta provides Product Photoshoot, Videography, Video Editing, Graphic Design, Digital Marketing, Website Development, App Development, Legal Support, Training Support and Podcast Services.">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f7f8fa;
+    color:#171717;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+section{
+    padding:75px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#666;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.navbar{
+    min-height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo img{
+    width:170px;
+    max-height:58px;
+    object-fit:contain;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+.nav-links a{
+    font-weight:600;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#e53935;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    background:linear-gradient(135deg,#111,#292929);
+    color:white;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1.25fr;
+    gap:50px;
+    align-items:center;
+}
+
+.hero-content h1{
+    font-size:55px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-content h1 span{
+    color:#ff4d4d;
+}
+
+.hero-content p{
+    font-size:19px;
+    color:#ddd;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 23px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#e53935;
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:#c62828;
+}
+
+.btn-light{
+    background:#fff;
+    color:#111;
+}
+
+.btn-light:hover{
+    background:#eee;
+}
+
+.video-wrapper{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    border-radius:18px;
+    box-shadow:0 15px 50px rgba(0,0,0,.35);
+}
+
+.video-wrapper iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+
+/* =========================
+   IMAGE SLIDER
+========================= */
+
+.slider{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.image-track{
+    display:flex;
+    transition:transform .5s ease;
+}
+
+.image-slide{
+    min-width:100%;
+}
+
+.image-slide img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+}
+
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.65);
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    z-index:2;
+}
+
+.prev{
+    left:15px;
+}
+
+.next{
+    right:15px;
+}
+
+.dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:15px;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    background:#ccc;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.dot.active{
+    background:#e53935;
+}
+
+
+/* =========================
+   VIDEO SLIDER
+========================= */
+
+.video-slider{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+}
+
+.video-slider::-webkit-scrollbar{
+    display:none;
+}
+
+.video-card{
+    min-width:calc(33.333% - 14px);
+    background:white;
+    padding:10px;
+    border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+.video-card iframe{
+    width:100%;
+    aspect-ratio:16/9;
+    border:0;
+    border-radius:10px;
+}
+
+.video-controls{
+    text-align:center;
+    margin-top:20px;
+}
+
+.video-controls button{
+    border:0;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#111;
+    color:white;
+    margin:5px;
+    cursor:pointer;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    background:#fff;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.service-card{
+    padding:30px 25px;
+    background:#f8f8f8;
+    border-radius:15px;
+    transition:.3s;
+    border:1px solid #eee;
+}
+
+.service-card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.service-icon{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.service-card h3{
+    margin-bottom:8px;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:#111;
+    color:white;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.about p{
+    color:#ccc;
+}
+
+
+/* =========================
+   OFFICE
+========================= */
+
+.office-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.map-box,
+.office-video{
+    background:white;
+    padding:10px;
+    border-radius:16px;
+    box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+.map-box iframe,
+.office-video iframe{
+    width:100%;
+    height:400px;
+    border:0;
+    border-radius:10px;
+}
+
+.address{
+    margin-top:25px;
+    padding:25px;
+    background:#fff;
+    border-left:5px solid #e53935;
+    border-radius:8px;
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+    background:#fff;
+}
+
+.faq-item{
+    background:#f7f7f7;
+    margin-bottom:12px;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.faq-question{
+    padding:20px;
+    cursor:pointer;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+}
+
+.faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    padding:0 20px;
+    color:#555;
+}
+
+.faq-item.active .faq-answer{
+    max-height:300px;
+    padding-bottom:20px;
+}
+
+
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews{
+    background:#f3f3f3;
+}
+
+.review-slider{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    scroll-behavior:smooth;
+}
+
+.review-slider::-webkit-scrollbar{
+    display:none;
+}
+
+.review{
+    min-width:calc(33.333% - 14px);
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.review p{
+    color:#555;
+    font-style:italic;
+    margin-bottom:15px;
+}
+
+.review h4{
+    font-size:15px;
+}
+
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social{
+    background:#111;
+    color:#fff;
+    text-align:center;
+}
+
+.social-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.social-links a{
+    padding:12px 20px;
+    border:1px solid #555;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.social-links a:hover{
+    background:#fff;
+    color:#111;
+}
+
+
+/* =========================
+   FLOATING CONTACT MENU
+========================= */
+
+.floating-menu{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:9999;
+}
+
+
+/* MAIN BUTTON */
+
+.floating-main{
+    width:58px;
+    height:58px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#111;
+    color:#fff;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.30);
+
+    transition:.3s;
+}
+
+.floating-main:hover{
+    transform:scale(1.08);
+}
+
+
+/* OPTIONS */
+
+.floating-options{
+    position:absolute;
+
+    right:5px;
+    bottom:70px;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(15px) scale(.8);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s;
+}
+
+
+/* OPEN */
+
+.floating-options.show{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0) scale(1);
+}
+
+
+/* OPTION BUTTON */
+
+.float-option{
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:21px;
+    font-weight:bold;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+
+    transition:.25s;
+}
+
+.float-option:hover{
+    transform:scale(1.12);
+}
+
+
+/* BUTTON COLORS */
+
+.float-option.phone{
+    background:#222;
+}
+
+.float-option.whatsapp{
+    background:#25D366;
+}
+
+.float-option.facebook{
+    background:#1877F2;
+}
+
+.float-option.website{
+    background:#e53935;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#080808;
+    color:#aaa;
+    text-align:center;
+    padding:25px;
+    font-size:14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+
+        position:absolute;
+
+        top:75px;
+        left:0;
+
+        width:100%;
+
+        background:white;
+
+        flex-direction:column;
+
+        padding:20px;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        padding:70px 0;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .office-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content h1{
+        font-size:42px;
+    }
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .video-card,
+    .review{
+        min-width:75%;
+    }
+
+    .image-slide img{
+        height:400px;
+    }
+}
+
+
+@media(max-width:600px){
+
+    section{
+        padding:55px 0;
+    }
+
+    .section-title h2{
+        font-size:29px;
+    }
+
+    .hero-content h1{
+        font-size:35px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .video-card,
+    .review{
+        min-width:90%;
+    }
+
+    .image-slide img{
+        height:280px;
+    }
+
+    .map-box iframe,
+    .office-video iframe{
+        height:300px;
+    }
+
+    .floating-menu{
+        right:15px;
+        bottom:15px;
+    }
+
+    .floating-main{
+        width:54px;
+        height:54px;
+    }
+
+    .float-option{
+        width:47px;
+        height:47px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="container navbar">
+
+<a href="#" class="logo">
+
+<!-- YOUR LOGO -->
+<img src="logo.png" alt="Amio Uddokta Logo">
+
+</a>
+
+
+<nav class="nav-links" id="navLinks">
+
+<a href="#home">Home</a>
+
+<a href="#services">Services</a>
+
+<a href="#office">Office</a>
+
+<a href="#faq">FAQ</a>
+
+<a href="#reviews">Reviews</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+
+<div class="menu-btn" onclick="toggleMenu()">
+☰
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+
+<div class="hero-content">
+
+<h1>
+  <span style="color: orange;">Amio</span>
+  <span style="color: red;">Uddokta</span>
+</h1>
+
+<p>
+
+ব্যবসা আপনার, বাকি সব দায়িত্ব আমাদের।
+
+আপনার ব্যবসার প্রয়োজনীয় Digital,
+Creative, Technology ও Business Support —
+সব এক জায়গায়।
+
+</p>
+
+
+<div class="buttons">
+
+<a href="tel:+8801685295669"
+class="btn btn-primary">
+
+☎ Call Now
+
+</a>
+
+
+<a href="https://wa.me/8801685295669"
+target="_blank"
+class="btn btn-light">
+
+WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<div class="video-wrapper">
+
+<!-- MAIN YOUTUBE VIDEO -->
+
+<iframe
+src="https://www.youtube.com/embed/YOUR_MAIN_VIDEO_ID"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     IMAGE SLIDER
+========================= -->
+
+<section>
+
+<div class="container">
+
+
+<div class="section-title">
+
+<h2>Our Work</h2>
+
+<p>
+Some of our selected work and activities
+</p>
+
+</div>
+
+
+<div class="slider">
+
+
+<div class="image-track"
+id="imageTrack">
+
+
+<div class="image-slide">
+
+<img
+src="images/work-1.jpg"
+alt="Amio Uddokta Work">
+
+</div>
+
+
+<div class="image-slide">
+
+<img
+src="images/work-2.jpg"
+alt="Amio Uddokta Work">
+
+</div>
+
+
+<div class="image-slide">
+
+<img
+src="images/work-3.jpg"
+alt="Amio Uddokta Work">
+
+</div>
+
+
+</div>
+
+
+<button
+class="slider-btn prev"
+onclick="moveImage(-1)">
+
+❮
+
+</button>
+
+
+<button
+class="slider-btn next"
+onclick="moveImage(1)">
+
+❯
+
+</button>
+
+
+</div>
+
+
+<div class="dots">
+
+<span
+class="dot active"
+onclick="goImage(0)">
+</span>
+
+<span
+class="dot"
+onclick="goImage(1)">
+</span>
+
+<span
+class="dot"
+onclick="goImage(2)">
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FEATURED VIDEOS
+========================= -->
+
+<section>
+
+<div class="container">
+
+
+<div class="section-title">
+
+<h2>Featured Videos</h2>
+
+<p>
+YouTube & Facebook content
+</p>
+
+</div>
+
+
+<div
+class="video-slider"
+id="videoSlider">
+
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID_1"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID_2"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID_3"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+</div>
+
+
+<div class="video-controls">
+
+<button onclick="scrollVideos(-1)">
+❮
+</button>
+
+<button onclick="scrollVideos(1)">
+❯
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section
+class="services"
+id="services">
+
+
+<div class="container">
+
+
+<div class="section-title">
+
+<h2>আমরা প্রদান করি</h2>
+
+<p>
+আপনার ব্যবসার জন্য প্রয়োজনীয় গুরুত্বপূর্ণ সার্ভিস
+</p>
+
+</div>
+
+
+<div class="service-grid">
+
+
+<div class="service-card">
+
+<div class="service-icon">
+📸
+</div>
+
+<h3>
+Product Photoshoot & Videography
+</h3>
+
+<p>
+Professional product photography and
+promotional video production.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+🎬
+</div>
+
+<h3>
+Video Editing
+</h3>
+
+<p>
+Professional reels, promotional videos,
+educational videos and more.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+🎨
+</div>
+
+<h3>
+Graphic Design
+</h3>
+
+<p>
+Branding, social media design,
+promotional graphics and creative materials.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+📢
+</div>
+
+<h3>
+Digital Marketing
+</h3>
+
+<p>
+Social media marketing, advertising
+and digital promotion.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+💻
+</div>
+
+<h3>
+Website Development
+</h3>
+
+<p>
+Business, e-commerce, educational
+and professional websites.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+📱
+</div>
+
+<h3>
+App Development
+</h3>
+
+<p>
+Custom mobile application development
+for businesses and organizations.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+⚖️
+</div>
+
+<h3>
+Legal Support
+</h3>
+
+<p>
+Business-related legal and documentation
+support.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+🎓
+</div>
+
+<h3>
+Training Support
+</h3>
+
+<p>
+Professional training and skill
+development support.
+</p>
+
+</div>
+
+
+
+<div class="service-card">
+
+<div class="service-icon">
+🎙️
+</div>
+
+<h3>
+Podcast
+</h3>
+
+<p>
+Professional podcast recording,
+production and editing.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about">
+
+
+<div class="container about-grid">
+
+
+<div>
+
+<h2>
+Why Amio Uddokta?
+</h2>
+
+
+<p>
+
+Amio Uddokta একটি উদ্যোক্তা-কেন্দ্রিক
+platform, যেখানে একটি ব্যবসার প্রয়োজনীয়
+creative, digital, technology এবং support
+services এক জায়গা থেকে পাওয়ার সুযোগ রয়েছে।
+
+</p>
+
+
+<br>
+
+
+<p>
+
+আমাদের লক্ষ্য হলো উদ্যোক্তাদের সময়,
+ঝামেলা এবং অতিরিক্ত coordination কমিয়ে
+একটি professional support system তৈরি করা।
+
+</p>
+
+</div>
+
+
+
+<div class="video-wrapper">
+
+<iframe
+src="https://www.youtube.com/embed/YOUR_ABOUT_VIDEO_ID"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     OFFICE
+========================= -->
+
+<section id="office">
+
+
+<div class="container">
+
+
+<div class="section-title">
+
+<h2>
+Visit Our Office
+</h2>
+
+<p>
+Come and discuss your business requirements with us.
+</p>
+
+</div>
+
+
+<div class="office-grid">
+
+
+<div class="map-box">
+
+<!-- GOOGLE MAP -->
+
+<iframe
+src="https://www.google.com/maps?q=Rupayan%20City%20Uttara%20Grand%2019%20Dhaka&output=embed"
+loading="lazy">
+</iframe>
+
+</div>
+
+
+
+<div class="office-video">
+
+<!-- OFFICE TUTORIAL VIDEO -->
+
+<iframe
+src="https://www.youtube.com/embed/YOUR_OFFICE_VIDEO_ID"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+</div>
+
+
+
+<div class="address">
+
+<h3>
+📍 Our Address
+</h3>
+
+
+<p>
+
+<strong>
+Amio Uddokta
+</strong>
+
+<br>
+
+Rupayan City Uttara, Grand 19
+
+<br>
+
+3rd Floor, Flat D2
+
+<br>
+
+Uttara, Dhaka, Bangladesh
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section
+class="faq"
+id="faq">
+
+
+<div class="container">
+
+
+<div class="section-title">
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+<p>
+কিছু সাধারণ প্রশ্নের উত্তর
+</p>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+আপনারা কী কী সার্ভিস প্রদান করেন?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+আমরা Product Photoshoot, Videography,
+Video Editing, Graphic Design, Digital Marketing,
+Website Development, App Development,
+Legal Support, Training Support এবং
+Podcast Service প্রদান করি।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Website Development করেন?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। Business, Portfolio, E-commerce,
+Educational এবং Custom Website Development
+করা হয়।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Product Photoshoot-এর খরচ কত?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+Photoshoot-এর খরচ নির্ভর করে product,
+location, model, shooting time, equipment
+এবং editing requirements-এর ওপর।
+
+বিস্তারিত জানতে আমাদের সাথে যোগাযোগ করুন।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Video Editing করেন?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। Reels, Shorts, YouTube videos,
+promotional videos, educational videos
+এবং অন্যান্য ভিডিও editing করা হয়।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Podcast recording করা যায়?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। আমাদের studio-তে professional
+podcast recording এবং editing service রয়েছে।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Office visit করা যাবে?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+অবশ্যই। আমাদের Uttara office-এ এসে
+সরাসরি আপনার business requirements
+নিয়ে আলোচনা করতে পারেন।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Digital Marketing করেন?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। Social media marketing, content
+promotion, advertising এবং digital
+marketing support প্রদান করি।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Facebook ও YouTube content তৈরি করেন?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। Content planning, shooting,
+editing এবং digital promotion-এর
+বিভিন্ন service রয়েছে।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+App Development করেন?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। প্রয়োজন অনুযায়ী custom application
+development service প্রদান করা হয়।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Legal Support পাওয়া যায়?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। Business-related বিভিন্ন
+documentation এবং legal support-এর
+জন্য assistance দেওয়া হয়।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+Training service আছে?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+হ্যাঁ। বিভিন্ন professional ও skill-based
+training support রয়েছে।
+
+</div>
+
+</div>
+
+
+
+<div class="faq-item">
+
+<div class="faq-question">
+
+কাজের quotation কীভাবে পাওয়া যাবে?
+
+<span>+</span>
+
+</div>
+
+
+<div class="faq-answer">
+
+আপনার কাজের details জানালে requirements
+অনুযায়ী quotation দেওয়া হবে।
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     REVIEWS
+========================= -->
+
+
+
+
+
+<!-- =========================
+     SOCIAL MEDIA
+========================= -->
+
+<section
+class="social"
+id="contact">
+
+
+<div class="container">
+
+
+<h2>
+Connect With Us
+</h2>
+
+
+<p>
+Follow us and stay connected.
+</p>
+
+
+
+<div class="social-links">
+
+
+<a
+href="https://www.facebook.com/amiouddoktaofficial"
+target="_blank">
+
+📘 Facebook
+
+</a>
+
+
+
+
+
+<a
+href="https://wa.me/8801685295669"
+target="_blank">
+
+💬 WhatsApp
+
+</a>
+
+
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FLOATING CONTACT
+========================= -->
+
+<div class="floating-menu">
+
+
+<!-- MAIN BUTTON -->
+
+<button
+class="floating-main"
+onclick="toggleFloatingMenu()">
+
+<span id="floatingIcon">
+☰
+</span>
+
+</button>
+
+
+
+<!-- HIDDEN OPTIONS -->
+
+<div
+class="floating-options"
+id="floatingOptions">
+
+
+<a
+href="tel:+8801685295669"
+class="float-option phone"
+title="Call">
+
+☎
+
+</a>
+
+
+
+<a
+href="https://wa.me/8801685295669"
+target="_blank"
+class="float-option whatsapp"
+title="WhatsApp">
+
+💬
+
+</a>
+
+
+
+<a
+href="https://www.facebook.com/amiouddoktaofficial"
+target="_blank"
+class="float-option facebook"
+title="Facebook">
+
+f
+
+</a>
+
+
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+© 2026 Amio Uddokta. All Rights Reserved.
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+    document
+    .getElementById("navLinks")
+    .classList
+    .toggle("show");
+
+}
+
+
+
+/* =========================
+   IMAGE SLIDER
+========================= */
+
+let currentImage = 0;
+
+
+function updateImage(){
+
+    const track =
+        document.getElementById("imageTrack");
+
+    track.style.transform =
+        `translateX(-${currentImage * 100}%)`;
+
+
+    document
+    .querySelectorAll(".dot")
+    .forEach((dot,index)=>{
+
+        dot.classList.toggle(
+            "active",
+            index === currentImage
+        );
+
+    });
+
+}
+
+
+function moveImage(direction){
+
+    currentImage += direction;
+
+
+    if(currentImage < 0){
+        currentImage = 2;
+    }
+
+
+    if(currentImage > 2){
+        currentImage = 0;
+    }
+
+
+    updateImage();
+
+}
+
+
+function goImage(index){
+
+    currentImage = index;
+
+    updateImage();
+
+}
+
+
+
+/* AUTO IMAGE SLIDER */
+
+setInterval(()=>{
+
+    moveImage(1);
+
+},5000);
+
+
+
+/* =========================
+   VIDEO SLIDER
+========================= */
+
+function scrollVideos(direction){
+
+    const slider =
+        document.getElementById("videoSlider");
+
+
+    slider.scrollBy({
+
+        left:direction * 400,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+
+/* =========================
+   REVIEW SLIDER
+========================= */
+
+const reviewSlider =
+    document.getElementById("reviewSlider");
+
+
+setInterval(()=>{
+
+
+    if(
+        reviewSlider.scrollLeft +
+        reviewSlider.clientWidth >=
+        reviewSlider.scrollWidth - 10
+    ){
+
+        reviewSlider.scrollTo({
+
+            left:0,
+
+            behavior:"smooth"
+
+        });
+
+    }else{
+
+        reviewSlider.scrollBy({
+
+            left:350,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+
+},4500);
+
+
+
+/* =========================
+   FAQ
+========================= */
+
+document
+.querySelectorAll(".faq-question")
+.forEach(question=>{
+
+
+    question.addEventListener(
+        "click",
+        ()=>{
+
+
+            const item =
+                question.parentElement;
+
+
+            item.classList.toggle(
+                "active"
+            );
+
+
+            const icon =
+                question.querySelector("span");
+
+
+            icon.textContent =
+                item.classList.contains("active")
+                ? "−"
+                : "+";
+
+
+        }
+    );
+
+});
+
+
+
+/* =========================
+   FLOATING CONTACT MENU
+========================= */
+
+function toggleFloatingMenu(){
+
+
+    const options =
+        document.getElementById(
+            "floatingOptions"
+        );
+
+
+    const icon =
+        document.getElementById(
+            "floatingIcon"
+        );
+
+
+    options.classList.toggle("show");
+
+
+    if(
+        options.classList.contains("show")
+    ){
+
+        icon.textContent = "×";
+
+    }else{
+
+        icon.textContent = "☰";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
