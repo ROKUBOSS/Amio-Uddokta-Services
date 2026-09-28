@@ -1,0 +1,390 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Amio Uddokta — Management</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .logo {
+      display: inline-block;
+      background: linear-gradient(135deg, #6c5ce7, #e84393);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    header p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding-bottom: 50px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid #e5e7eb;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    /* =========================
+       CARD COLORS
+    ========================= */
+
+    .card:nth-child(1) .number {
+      background: #6c5ce7;
+    }
+
+    .card:nth-child(2) .number {
+      background: #00b894;
+    }
+
+    .card:nth-child(3) .number {
+      background: #e84393;
+    }
+
+    .card:nth-child(4) .number {
+      background: #0984e3;
+    }
+
+    .card:nth-child(5) .number {
+      background: #e17055;
+    }
+
+    .card:nth-child(6) .number {
+      background: #00cec9;
+    }
+
+    .card:nth-child(7) .number {
+      background: #d63031;
+    }
+
+    .card:nth-child(8) .number {
+      background: #f39c12;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      border-top: 1px solid #e5e7eb;
+      color: #64748b;
+      font-size: 13px;
+      background: #ffffff;
+    }
+
+    footer strong {
+      color: #6c5ce7;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 40px 15px 30px;
+      }
+
+      header h1 {
+        font-size: 27px;
+      }
+
+      .container {
+        width: 92%;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+    }
+
+    /* =========================
+       SMALL MOBILE
+    ========================= */
+
+    @media (max-width: 400px) {
+
+      header h1 {
+        font-size: 24px;
+      }
+
+      header p {
+        font-size: 13px;
+      }
+
+      .card h2 {
+        font-size: 17px;
+      }
+
+      .card p {
+        font-size: 13px;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+
+    <div class="container">
+
+      <div class="logo">
+        Amio Uddokta
+      </div>
+
+      <h1>Management Dashboard</h1>
+
+      <p>
+        Business Your Responsibility, Everything Else Ours
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================= -->
+
+  <main class="container">
+
+    <section class="services">
+
+      <!-- 01 -->
+      <div class="card">
+
+        <div class="number">01</div>
+
+        <h2>Employee Agreement</h2>
+
+        <p>
+          Employee joining, resignation notice period, responsibilities,
+          terms & conditions এবং agreement management।
+        </p>
+
+      </div>
+
+
+      <!-- 02 -->
+      <div class="card">
+
+        <div class="number">02</div>
+
+        <h2>Employee Management</h2>
+
+        <p>
+          Employee-এর office time, salary, attendance, vacation,
+          leave এবং অন্যান্য HR information।
+        </p>
+
+      </div>
+
+
+      <!-- 03 -->
+      <div class="card">
+
+        <div class="number">03</div>
+
+        <h2>Model & Presenter Hiring</h2>
+
+        <p>
+          Full-time Male & Female Model / Presenter hiring, profile,
+          salary, availability এবং contract management।
+        </p>
+
+      </div>
+
+
+      <!-- 04 -->
+      <div class="card">
+
+        <div class="number">04</div>
+
+        <h2>Company & Legal Documents</h2>
+
+        <p>
+          Trade License, Limited Company Registration, Partner Agreement,
+          TIN, BIN, Bank Account এবং অন্যান্য company documents।
+        </p>
+
+      </div>
+
+
+      <!-- 05 -->
+      <div class="card">
+
+        <div class="number">05</div>
+
+        <h2>Studio Equipment</h2>
+
+        <p>
+          Studio-তে থাকা equipment-এর Name, Model, Quantity & Price
+          এবং প্রয়োজনীয় নতুন equipment-এর তালিকা।
+        </p>
+
+      </div>
+
+
+      <!-- 06 -->
+      <div class="card">
+
+        <div class="number">06</div>
+
+        <h2>Work Station</h2>
+
+        <p>
+          Work Station-এর বর্তমান devices, Name, Model & Price এবং
+          নতুন প্রয়োজনীয় devices/equipment-এর তালিকা।
+        </p>
+
+      </div>
+
+
+      <!-- 07 -->
+      <div class="card">
+
+        <div class="number">07</div>
+
+        <h2>Content Management</h2>
+
+        <p>
+          মোট pending content, delivery date, estimated completion time,
+          payment status এবং content-wise progress tracking।
+        </p>
+
+      </div>
+
+
+      <!-- 08 -->
+      <div class="card">
+
+        <div class="number">08</div>
+
+        <h2>Accounts & Finance</h2>
+
+        <p>
+          Income, expenses, salary payments, bills, invoices,
+          accounts, payment records এবং overall financial management।
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <strong>Amio Uddokta</strong>
+    —
+    Business Your Responsibility, Everything Else Ours
+
+  </footer>
+
+</body>
+
+</html>
+
