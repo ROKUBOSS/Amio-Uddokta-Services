@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Project Management Dashboard</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #eef2ff, #fdf2f8);
+        color: #1f2937;
+        padding: 25px 15px;
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    /* Header */
+    .header {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
+        color: white;
+        padding: 30px;
+        border-radius: 22px;
+        margin-bottom: 22px;
+        box-shadow: 0 15px 35px rgba(79, 70, 229, .25);
+    }
+
+    .header h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .header p {
+        opacity: .9;
+        font-size: 14px;
+    }
+
+    /* Summary */
+    .summary {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 22px;
+    }
+
+    .summary-card {
+        background: white;
+        border-radius: 18px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    }
+
+    .summary-card .number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #4f46e5;
+    }
+
+    .summary-card span {
+        display: block;
+        color: #6b7280;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    /* Section */
+    .section {
+        margin-bottom: 15px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    }
+
+    .collapsible {
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        padding: 19px 22px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: .3s;
+    }
+
+    .collapsible:hover {
+        filter: brightness(1.08);
+    }
+
+    .collapsible .title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .icon {
+        font-size: 22px;
+    }
+
+    .arrow {
+        font-size: 20px;
+        transition: transform .3s;
+    }
+
+    .active .arrow {
+        transform: rotate(180deg);
+    }
+
+    /* Different colors */
+    .videos {
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+    }
+
+    .equipment {
+        background: linear-gradient(135deg, #059669, #10b981);
+    }
+
+    .scripts {
+        background: linear-gradient(135deg, #ea580c, #f97316);
+    }
+
+    /* Content */
+    .content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .4s ease;
+        background: #fff;
+    }
+
+    .content-inner {
+        padding: 20px;
+    }
+
+    /* Checklist */
+    .check-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 15px;
+        margin-bottom: 8px;
+        background: #f8fafc;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: .25s;
+        border: 1px solid #e5e7eb;
+    }
+
+    .check-item:hover {
+        background: #eef2ff;
+        transform: translateX(3px);
+    }
+
+    .check-item input {
+        width: 19px;
+        height: 19px;
+        accent-color: #4f46e5;
+        cursor: pointer;
+    }
+
+    .check-item.checked {
+        background: #ecfdf5;
+        border-color: #10b981;
+        color: #047857;
+        text-decoration: line-through;
+    }
+
+    /* Progress */
+    .progress-box {
+        margin-bottom: 18px;
+        padding: 15px;
+        background: #f8fafc;
+        border-radius: 14px;
+    }
+
+    .progress-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        margin-bottom: 8px;
+        color: #475569;
+    }
+
+    .progress {
+        width: 100%;
+        height: 10px;
+        background: #e5e7eb;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #4f46e5, #ec4899);
+        border-radius: 20px;
+        transition: width .4s ease;
+    }
+
+    /* Others */
+    .others {
+        text-align: center;
+        margin: 18px 0 10px;
+        color: #6b7280;
+        font-size: 13px;
+        font-weight: bold;
+        position: relative;
+    }
+
+    .others::before,
+    .others::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 35%;
+        height: 1px;
+        background: #e5e7eb;
+    }
+
+    .others::before {
+        left: 0;
+    }
+
+    .others::after {
+        right: 0;
+    }
+
+    /* Scripts */
+    .script-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .script-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 17px;
+        text-decoration: none;
+        color: #1e293b;
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        border-radius: 12px;
+        transition: .25s;
+        font-weight: bold;
+    }
+
+    .script-link:hover {
+        background: #ffedd5;
+        transform: translateY(-3px);
+        box-shadow: 0 7px 15px rgba(0,0,0,.08);
+    }
+
+    .script-link span {
+        color: #ea580c;
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        margin-top: 25px;
+        color: #64748b;
+        font-size: 12px;
+    }
+
+    /* Mobile */
+    @media (max-width: 650px) {
+
+        body {
+            padding: 15px 10px;
+        }
+
+        .header {
+            padding: 22px;
+            border-radius: 18px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+        }
+
+        .summary {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .summary-card {
+            padding: 15px;
+        }
+
+        .collapsible {
+            padding: 17px;
+            font-size: 14px;
+        }
+
+        .content-inner {
+            padding: 14px;
+        }
+
+        .script-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .check-item {
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🎬 Project Management Dashboard</h1>
+        <p>Organic Pain Relief Oil — Video Production Project</p>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+
+        <div class="summary-card">
+            <div class="number">200</div>
+            <span>Total Videos</span>
+        </div>
+
+        <div class="summary-card">
+            <div class="number" id="completedCount">0</div>
+            <span>Completed</span>
+        </div>
+
+        <div class="summary-card">
+            <div class="number" id="remainingCount">200</div>
+            <span>Remaining</span>
+        </div>
+
+    </div>
+
+
+    <!-- VIDEO SECTION -->
+    <div class="section">
+
+        <button class="collapsible videos">
+
+            <span class="title">
+                <span class="icon">🎥</span>
+                Total Videos — 200
+            </span>
+
+            <span class="arrow">⌄</span>
+
+        </button>
+
+        <div class="content">
+
+            <div class="content-inner">
+
+                <div class="progress-box">
+
+                    <div class="progress-info">
+                        <span>Project Progress</span>
+                        <span id="progressText">0%</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+
+                </div>
+
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Doctor — 30
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Lawyer — 10
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Journalist / News Presenter — 10
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Teacher — 20
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Cabin Crew — 20
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Sports Person / Gym — 20
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Banker — 20
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Housewife — 20
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Hujur / Imam — 20
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    Senior Citizen / Older Person — 20
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="video-check">
+                    IT Professional / Freelancer — 10
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- EQUIPMENT -->
+    <div class="section">
+
+        <button class="collapsible equipment">
+
+            <span class="title">
+                <span class="icon">📷</span>
+                Devices & Equipment
+            </span>
+
+            <span class="arrow">⌄</span>
+
+        </button>
+
+        <div class="content">
+
+            <div class="content-inner">
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    📱 iPhone
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    🎥 Gimbal
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    💡 Ice Light
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    🔋 Powerbank
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    🎒 Bag
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    📐 Tripod
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    🎙️ Microphone
+                </label>
+
+
+                <div class="others">OTHERS</div>
+
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    ☂️ Umbrella
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    💧 Waterpot
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+   
+<div style="text-align: center;">
+    <button style="padding: 10px 20px; background-color: #4f46e5; border: none; border-radius: 8px; cursor: pointer;">
+        <a href="about.html" target="_blank" style="color: white; text-decoration: none; font-weight: bold;">
+            About Product / Script / Direction 
+        </a>
+    </button>
+</div>
+
+
+   
+
+    <div class="footer">
+        © 2026 Project Management Dashboard
+    </div>
+
+</div>
+
+
+<script>
+
+    /* Collapsible */
+
+    const collapsibles =
+        document.querySelectorAll(".collapsible");
+
+    collapsibles.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            this.classList.toggle("active");
+
+            const content = this.nextElementSibling;
+
+            if (content.style.maxHeight) {
+
+                content.style.maxHeight = null;
+
+            } else {
+
+                content.style.maxHeight =
+                    content.scrollHeight + "px";
+
+            }
+
+        });
+
+    });
+
+
+    /* Checkbox */
+
+    const videoChecks =
+        document.querySelectorAll(".video-check");
+
+    const completedCount =
+        document.getElementById("completedCount");
+
+    const remainingCount =
+        document.getElementById("remainingCount");
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const progressText =
+        document.getElementById("progressText");
+
+
+    videoChecks.forEach(check => {
+
+        check.addEventListener("change", function () {
+
+            this.parentElement.classList.toggle(
+                "checked",
+                this.checked
+            );
+
+            updateProgress();
+
+        });
+
+    });
+
+
+    function updateProgress() {
+
+        const completed =
+            document.querySelectorAll(
+                ".video-check:checked"
+            ).length;
+
+        /*
+            There are 11 categories,
+            so this calculates category progress.
+        */
+
+        const total =
+            videoChecks.length;
+
+        const percentage =
+            Math.round((completed / total) * 100);
+
+        completedCount.textContent = completed;
+
+        remainingCount.textContent =
+            total - completed;
+
+        progressBar.style.width =
+            percentage + "%";
+
+        progressText.textContent =
+            percentage + "%";
+
+    }
+
+</script>
+
+</body>
+</html>

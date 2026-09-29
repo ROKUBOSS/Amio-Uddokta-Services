@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Video Guide & Information</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef7ff, #fff7fb);
+    color: #172554;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ================= HEADER ================= */
+
+.hero {
+    background: linear-gradient(135deg, #047857, #0d9488, #2563eb);
+    color: white;
+    border-radius: 24px;
+    padding: 35px;
+    margin-bottom: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "🌿";
+    position: absolute;
+    right: 30px;
+    bottom: -20px;
+    font-size: 100px;
+    opacity: .15;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.hero p {
+    font-size: 15px;
+    opacity: .9;
+}
+
+/* ================= MAIN CARD ================= */
+
+.main-card {
+    background: rgba(255,255,255,.9);
+    border-radius: 22px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(15,23,42,.08);
+    border: 1px solid rgba(255,255,255,.8);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 23px;
+}
+
+.direction-icon {
+    background: linear-gradient(135deg,#7c3aed,#4f46e5);
+}
+
+.product-icon {
+    background: linear-gradient(135deg,#ef4444,#f97316);
+}
+
+.script-icon {
+    background: linear-gradient(135deg,#2563eb,#06b6d4);
+}
+
+.section-title h2 {
+    font-size: 26px;
+}
+
+/* ================= ACCORDION ================= */
+
+.accordion {
+    margin-bottom: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.collapsible {
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    color: white;
+    padding: 17px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: all .3s ease;
+}
+
+.collapsible:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+.collapsible-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.item-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.arrow {
+    font-size: 20px;
+    transition: transform .3s ease;
+}
+
+.collapsible.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* ================= COLORS ================= */
+
+.direction {
+    background: linear-gradient(135deg,#7c3aed,#4f46e5);
+}
+
+.product1 {
+    background: linear-gradient(135deg,#16a34a,#10b981);
+}
+
+.product2 {
+    background: linear-gradient(135deg,#2563eb,#06b6d4);
+}
+
+.product3 {
+    background: linear-gradient(135deg,#f59e0b,#f97316);
+}
+
+.product4 {
+    background: linear-gradient(135deg,#9333ea,#7c3aed);
+}
+
+.product5 {
+    background: linear-gradient(135deg,#ec4899,#f43f5e);
+}
+
+.product6 {
+    background: linear-gradient(135deg,#0891b2,#06b6d4);
+}
+
+.day1 {
+    background: linear-gradient(135deg,#2563eb,#6366f1);
+}
+
+.day2 {
+    background: linear-gradient(135deg,#16a34a,#22c55e);
+}
+
+.day3 {
+    background: linear-gradient(135deg,#7c3aed,#a855f7);
+}
+
+.day4 {
+    background: linear-gradient(135deg,#db2777,#f43f5e);
+}
+
+.day5 {
+    background: linear-gradient(135deg,#ea580c,#f59e0b);
+}
+
+.day6 {
+    background: linear-gradient(135deg,#0891b2,#06b6d4);
+}
+
+.day7 {
+    background: linear-gradient(135deg,#6d28d9,#8b5cf6);
+}
+
+/* ================= CONTENT ================= */
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    background: #f8fafc;
+    transition: max-height .4s ease;
+}
+
+.content-inner {
+    padding: 18px;
+}
+
+.content a {
+    display: inline-block;
+    background: white;
+    color: #2563eb;
+    padding: 11px 17px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #e2e8f0;
+    transition: .25s;
+}
+
+.content a:hover {
+    background: #eff6ff;
+    transform: translateY(-2px);
+}
+
+.direction-list {
+    list-style: none;
+}
+
+.direction-list li {
+    background: white;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    border-left: 4px solid #6366f1;
+}
+
+.direction-list li::before {
+    content: "✓";
+    color: #4f46e5;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* ================= PRODUCT BUTTON ================= */
+
+.view-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background: linear-gradient(135deg,#4f46e5,#7c3aed);
+    color: white !important;
+    border: none !important;
+    border-radius: 9px !important;
+}
+
+/* ================= SCRIPT GRID ================= */
+
+.script-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}
+
+.script-grid .accordion {
+    margin-bottom: 0;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    text-align: center;
+    padding: 25px 10px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 700px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .hero {
+        padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .main-card {
+        padding: 15px;
+        border-radius: 18px;
+    }
+
+    .section-title h2 {
+        font-size: 22px;
+    }
+
+    .section-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 19px;
+    }
+
+    .collapsible {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .item-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .script-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-inner {
+        padding: 14px;
+    }
+}
+
+@media(max-width: 400px) {
+
+    .hero h1 {
+        font-size: 21px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .section-title h2 {
+        font-size: 19px;
+    }
+
+    .collapsible {
+        font-size: 13px;
+    }
+
+    .item-icon {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>🎬 Video Guide & Information</h1>
+        <p>Everything you need for a successful video production.</p>
+    </div>
+
+
+    <!-- ================= DIRECTION ================= -->
+
+    <div class="main-card">
+
+        <div class="section-title">
+            <div class="section-icon direction-icon">✦</div>
+            <h2>Direction</h2>
+        </div>
+
+        <div class="accordion">
+
+            <button class="collapsible direction">
+
+                <span class="collapsible-left">
+                    <span class="item-icon">📋</span>
+                    Proper Direction
+                </span>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+            <div class="content">
+
+                <div class="content-inner">
+
+                    <ul class="direction-list">
+
+                        <li>Video Ratio - Reels</li>
+                        <li>Duration - 30s - 1m</li>
+                        <li>Text - Yes</li>
+                        <li>Background Music - No</li>
+                        <li>?</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ABOUT PRODUCT ================= -->
+
+    <div class="main-card">
+
+        <div class="section-title">
+            <div class="section-icon product-icon">📦</div>
+            <h2>About Product</h2>
+        </div>
+
+
+        <!-- Product -->
+        <div class="accordion">
+
+            <button class="collapsible product1">
+
+                <span class="collapsible-left">
+                    <span class="item-icon">🌿</span>
+                    আবাবিল অর্গানিক পেইন রিলিফ অয়েল
+                </span>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+            <div class="content">
+                <div class="content-inner">
+
+                    <a href="ababiloil.txt" target="_blank" class="view-button">
+                        🔗 View Details
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Ingredients -->
+        <div class="accordion">
+
+            <button class="collapsible product2">
+
+                <span class="collapsible-left">
+                    <span class="item-icon">🧪</span>
+                    উপাদানসমূহ
+                </span>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+            <div class="content">
+
+                <div class="content-inner">
+
+                    <a href="elements.txt" target="_blank" class="view-button">
+                        🔗 View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Usage -->
+        <div class="accordion">
+
+            <button class="collapsible product3">
+
+                <span class="collapsible-left">
+                    <span class="item-icon">⚙️</span>
+                    ব্যবহারের নিয়ম
+                </span>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+            <div class="content">
+
+                <div class="content-inner">
+
+                    <a href="howtouse.txt" target="_blank" class="view-button">
+                        🔗 View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Warning -->
+        <div class="accordion">
+
+            <button class="collapsible product4">
+
+                <span class="collapsible-left">
+                    <span class="item-icon">⚠️</span>
+                    সতর্কতা
+                </span>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+            <div class="content">
+
+                <div class="content-inner">
+
+                    <a href="warning.txt" target="_blank" class="view-button">
+                        🔗 View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Exp -->
+        <div class="accordion">
+
+            <button class="collapsible product5">
+
+                <span class="collapsible-left">
+                    <span class="item-icon">📅</span>
+                    Exp. Date & Price
+                </span>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+            <div class="content">
+
+                <div class="content-inner">
+
+                    <a href="expandprice.txt" target="_blank" class="view-button">
+                        🔗 View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Ashfaq -->
+        <div class="accordion">
+
+            <button class="collapsible product6">
+
+                <span class="collapsible-left">
+                    <span class="item-icon">👤</span>
+                    আশফাক ভাই হতে বিবরণ
+                </span>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+            <div class="content">
+
+                <div class="content-inner">
+
+                    <a href="fromowner.txt" target="_blank" class="view-button">
+                        🔗 View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SCRIPT ================= -->
+
+    <div class="main-card">
+
+        <div class="section-title">
+            <div class="section-icon script-icon">📄</div>
+            <h2>Script</h2>
+        </div>
+
+
+        <div class="script-grid">
+
+            <!-- DAY 1 -->
+            <div class="accordion">
+
+                <button class="collapsible day1">
+
+                    <span class="collapsible-left">
+                        <span class="item-icon">📅</span>
+                        Day 1
+                    </span>
+
+                    <span class="arrow">⌄</span>
+
+                </button>
+
+                <div class="content">
+                    <div class="content-inner">
+                        <a href="" target="_blank" class="view-button">
+                            🔗 View Script
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAY 2 -->
+            <div class="accordion">
+
+                <button class="collapsible day2">
+
+                    <span class="collapsible-left">
+                        <span class="item-icon">📅</span>
+                        Day 2
+                    </span>
+
+                    <span class="arrow">⌄</span>
+
+                </button>
+
+                <div class="content">
+                    <div class="content-inner">
+                        <a href="" target="_blank" class="view-button">
+                            🔗 View Script
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAY 3 -->
+            <div class="accordion">
+
+                <button class="collapsible day3">
+
+                    <span class="collapsible-left">
+                        <span class="item-icon">📅</span>
+                        Day 3
+                    </span>
+
+                    <span class="arrow">⌄</span>
+
+                </button>
+
+                <div class="content">
+                    <div class="content-inner">
+                        <a href="" target="_blank" class="view-button">
+                            🔗 View Script
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAY 4 -->
+            <div class="accordion">
+
+                <button class="collapsible day4">
+
+                    <span class="collapsible-left">
+                        <span class="item-icon">📅</span>
+                        Day 4
+                    </span>
+
+                    <span class="arrow">⌄</span>
+
+                </button>
+
+                <div class="content">
+                    <div class="content-inner">
+                        <a href="" target="_blank" class="view-button">
+                            🔗 View Script
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAY 5 -->
+            <div class="accordion">
+
+                <button class="collapsible day5">
+
+                    <span class="collapsible-left">
+                        <span class="item-icon">📅</span>
+                        Day 5
+                    </span>
+
+                    <span class="arrow">⌄</span>
+
+                </button>
+
+                <div class="content">
+                    <div class="content-inner">
+                        <a href="" target="_blank" class="view-button">
+                            🔗 View Script
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAY 6 -->
+            <div class="accordion">
+
+                <button class="collapsible day6">
+
+                    <span class="collapsible-left">
+                        <span class="item-icon">📅</span>
+                        Day 6
+                    </span>
+
+                    <span class="arrow">⌄</span>
+
+                </button>
+
+                <div class="content">
+                    <div class="content-inner">
+                        <a href="" target="_blank" class="view-button">
+                            🔗 View Script
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAY 7 -->
+            <div class="accordion">
+
+                <button class="collapsible day7">
+
+                    <span class="collapsible-left">
+                        <span class="item-icon">📅</span>
+                        Day 7
+                    </span>
+
+                    <span class="arrow">⌄</span>
+
+                </button>
+
+                <div class="content">
+                    <div class="content-inner">
+                        <a href="" target="_blank" class="view-button">
+                            🔗 View Script
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        ❤️ Better Content &nbsp; | &nbsp; Better Results
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= ACCORDION ================= */
+
+const buttons = document.querySelectorAll(".collapsible");
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        this.classList.toggle("active");
+
+        const content = this.nextElementSibling;
+
+        if (content.style.maxHeight) {
+
+            content.style.maxHeight = null;
+
+        } else {
+
+            content.style.maxHeight =
+                content.scrollHeight + "px";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
