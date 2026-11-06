@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimum Cost Calculator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f3f5fb;
+    color: #252a40;
+    padding: 30px 18px;
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header h1 {
+    font-size: clamp(25px, 4vw, 38px);
+    font-weight: 800;
+    background: linear-gradient(90deg, #635bff, #00b8a9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header p {
+    color: #7b8196;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Summary */
+.summary {
+    background: linear-gradient(120deg, #635bff, #4135c9);
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 12px 30px rgba(99,91,255,.2);
+}
+
+.summary-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.summary h3 {
+    font-size: 16px;
+    font-weight: 500;
+    opacity: .85;
+}
+
+.grand-total {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.summary-bottom {
+    display: flex;
+    gap: 20px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+}
+
+.summary-bottom span {
+    font-size: 13px;
+    background: rgba(255,255,255,.15);
+    padding: 9px 15px;
+    border-radius: 30px;
+}
+
+.reset-btn {
+    background: white;
+    color: #5146df;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.reset-btn:hover {
+    transform: translateY(-3px);
+    background: #f0efff;
+}
+
+/* Expense Grid */
+.expense-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 23px;
+    box-shadow: 0 5px 25px rgba(35,40,80,.05);
+    border: 1px solid #edf0f7;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(35,40,80,.09);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-icon {
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    border-radius: 12px;
+}
+
+.office .card-icon {
+    background: #e9e7ff;
+}
+
+.minimum .card-icon {
+    background: #dff9f0;
+}
+
+.extra .card-icon {
+    background: #fff0df;
+}
+
+.card h2 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card-header small {
+    color: #9297a9;
+    font-size: 11px;
+}
+
+.count {
+    background: #f0efff;
+    color: #635bff;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Items */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 13px;
+    background: #f8f9fd;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.item:hover {
+    background: #f0efff;
+    border-color: #dcd9ff;
+}
+
+.item.selected {
+    background: #f0efff;
+    border-color: #c8c2ff;
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.item input {
+    width: 18px;
+    height: 18px;
+    accent-color: #635bff;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.item-name {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.price {
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: #42475d;
+}
+
+.card-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    padding: 16px;
+    background: linear-gradient(100deg, #f0efff, #f5f3ff);
+    border-radius: 12px;
+}
+
+.card-total span:first-child {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666b80;
+}
+
+.total-value {
+    color: #635bff;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+/* Extra card */
+.extra {
+    grid-column: 1 / -1;
+}
+
+.extra .item-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px 10px 10px;
+    color: #a0a4b4;
+    font-size: 12px;
+}
+
+@media(max-width: 700px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .expense-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .extra {
+        grid-column: auto;
+    }
+
+    .extra .item-list {
+        grid-template-columns: 1fr;
+    }
+
+    .summary {
+        padding: 23px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .summary-bottom {
+        gap: 10px;
+    }
+}
+
+@media(max-width: 380px) {
+    .item {
+        padding: 11px 9px;
+    }
+
+    .item-name, .price {
+        font-size: 11px;
+    }
+
+    .card h2 {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+    <marquee behavior="scroll" direction="left" scrollamount="5"
+    style="background: linear-gradient(90deg, #fff3cd, #ffe0b2); 
+    color: #b45309; 
+    padding: 10px 15px; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    font-weight: 600; 
+    font-family: Arial, sans-serif;
+    border: 1px solid #fcd34d;">
+    ⚠️ Monthly marketing expenses have not been included here.
+</marquee>
+<div class="container">
+
+    <div class="header">
+        <h1>Minimum Cost Calculator</h1>
+        <p>Manage your monthly office expenses and staff salaries</p>
+    </div>
+
+    <!-- Grand Total -->
+    <div class="summary">
+        <div class="summary-top">
+            <div>
+                <h3>Total Monthly Budget</h3>
+                <div class="grand-total" id="grandTotal">৳ 0</div>
+            </div>
+
+            <button class="reset-btn" onclick="resetAll()">
+                ↻ Reset All
+            </button>
+        </div>
+
+        <div class="summary-bottom">
+            <span id="selectedCount">0 Items Selected</span>
+            <span id="officeSummary">Office: ৳ 0</span>
+            <span id="staffSummary">Staff: ৳ 0</span>
+        </div>
+    </div>
+
+    <div class="expense-grid">
+
+        <!-- Office Expenses -->
+        <div class="card office">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-icon">🏢</div>
+                    <div>
+                        <h2>Office Rent & Utilities</h2>
+                        <small>Monthly office expenses</small>
+                    </div>
+                </div>
+                <span class="count">OFFICE</span>
+            </div>
+
+            <div class="item-list">
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="office" data-price="60000">
+                        <span class="item-name">Office Rent</span>
+                    </div>
+                    <span class="price">৳ 60,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="office" data-price="11000">
+                        <span class="item-name">Services Charge</span>
+                    </div>
+                    <span class="price">৳ 11,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="office" data-price="8000">
+                        <span class="item-name">Utility Bills</span>
+                    </div>
+                    <span class="price">৳ 8,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="office" data-price="5250">
+                        <span class="item-name">Internet</span>
+                    </div>
+                    <span class="price">৳ 5,250</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="office" data-price="3800">
+                        <span class="item-name">Hosting</span>
+                    </div>
+                    <span class="price">৳ 3,800</span>
+                </label>
+            </div>
+
+            <div class="card-total">
+                <span>Office Total</span>
+                <span class="total-value" id="officeTotal">৳ 0</span>
+            </div>
+        </div>
+
+        <!-- Minimum Staff -->
+        <div class="card minimum">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-icon">👥</div>
+                    <div>
+                        <h2>Minimum Staff</h2>
+                        <small>Essential team members</small>
+                    </div>
+                </div>
+                <span class="count">ESSENTIAL</span>
+            </div>
+
+            <div class="item-list">
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="minimum" data-price="32000">
+                        <span class="item-name">Cinematographer (Faysal)</span>
+                    </div>
+                    <span class="price">৳ 32,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="minimum" data-price="30000">
+                        <span class="item-name">Video Editor (Ishtiak)</span>
+                    </div>
+                    <span class="price">৳ 30,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="minimum" data-price="35000">
+                        <span class="item-name">Full Stack Developer (Eibrahim)</span>
+                    </div>
+                    <span class="price">৳ 35,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="minimum" data-price="10000">
+                        <span class="item-name">Peon (Akash)</span>
+                    </div>
+                    <span class="price">৳ 10,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="minimum" data-price="5000">
+                        <span class="item-name">Helping Hand (Bua)</span>
+                    </div>
+                    <span class="price">৳ 5,000</span>
+                </label>
+            </div>
+
+            <div class="card-total">
+                <span>Minimum Staff Total</span>
+                <span class="total-value" id="minimumTotal">৳ 0</span>
+            </div>
+        </div>
+
+        <!-- Extra Staff -->
+        <div class="card extra">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-icon">🚀</div>
+                    <div>
+                        <h2>Extra Staff</h2>
+                        <small>Additional team members</small>
+                    </div>
+                </div>
+                <span class="count">OPTIONAL</span>
+            </div>
+
+            <div class="item-list">
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="50000">
+                        <span class="item-name">Manager (Sohel Vai)</span>
+                    </div>
+                    <span class="price">৳ 50,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="50000">
+                        <span class="item-name">Customer Care (Shayma)</span>
+                    </div>
+                    <span class="price">৳ 50,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="20000">
+                        <span class="item-name">Accountant (Saiful)</span>
+                    </div>
+                    <span class="price">৳ 20,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="10000">
+                        <span class="item-name">Cinematographer (Rubel)</span>
+                    </div>
+                    <span class="price">৳ 10,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="30000">
+                        <span class="item-name">Video Editor (Kayum)</span>
+                    </div>
+                    <span class="price">৳ 30,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="30000">
+                        <span class="item-name">Video Editor (Ratul)</span>
+                    </div>
+                    <span class="price">৳ 30,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="25000">
+                        <span class="item-name">Front End Developer (Nahid)</span>
+                    </div>
+                    <span class="price">৳ 25,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="25000">
+                        <span class="item-name">UI UX (Badsha)</span>
+                    </div>
+                    <span class="price">৳ 25,000</span>
+                </label>
+
+                <label class="item">
+                    <div class="item-left">
+                        <input type="checkbox" class="expense" data-group="extra" data-price="30000">
+                        <span class="item-name">Digital Marketer (Mahbub)</span>
+                    </div>
+                    <span class="price">৳ 30,000</span>
+                </label>
+
+            </div>
+
+            <div class="card-total">
+                <span>Extra Staff Total</span>
+                <span class="total-value" id="extraTotal">৳ 0</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Minimum Cost Calculator | Monthly Budget Management
+    </div>
+
+</div>
+
+<script>
+const checkboxes = document.querySelectorAll('.expense');
+
+function formatMoney(amount) {
+    return '৳ ' + amount.toLocaleString('en-IN');
+}
+
+function calculateTotal() {
+    let office = 0;
+    let minimum = 0;
+    let extra = 0;
+    let selected = 0;
+
+    checkboxes.forEach(input => {
+        const item = input.closest('.item');
+        item.classList.toggle('selected', input.checked);
+
+        if (input.checked) {
+            const price = Number(input.dataset.price);
+            const group = input.dataset.group;
+
+            selected++;
+
+            if (group === 'office') office += price;
+            if (group === 'minimum') minimum += price;
+            if (group === 'extra') extra += price;
+        }
+    });
+
+    const grandTotal = office + minimum + extra;
+
+    document.getElementById('officeTotal').textContent = formatMoney(office);
+    document.getElementById('minimumTotal').textContent = formatMoney(minimum);
+    document.getElementById('extraTotal').textContent = formatMoney(extra);
+
+    document.getElementById('grandTotal').textContent = formatMoney(grandTotal);
+
+    document.getElementById('selectedCount').textContent =
+        selected + ' Items Selected';
+
+    document.getElementById('officeSummary').textContent =
+        'Office: ' + formatMoney(office);
+
+    document.getElementById('staffSummary').textContent =
+        'Staff: ' + formatMoney(minimum + extra);
+}
+
+checkboxes.forEach(input => {
+    input.addEventListener('change', calculateTotal);
+});
+
+function resetAll() {
+    checkboxes.forEach(input => {
+        input.checked = false;
+    });
+
+    calculateTotal();
+}
+
+calculateTotal();
+</script>
+
+</body>
+</html>
